@@ -2,11 +2,13 @@
 const HTTP_NO_CONTENT = 204
 const HTTP_CREATED = 201
 const HTTP_CONFLICT = 409
+const HTTP_INTERNAL_SERVER_ERROR = 500
 
 module.exports = function(app) {
 
 	app.get('/api/v1/reviews', async function readAll(req, res) {
 		const result = await app.reviewsService.getAll(req)
+		req.logMessage('info', 'Inside GET reviews')
 		res.send(result)
 	})
 
@@ -38,8 +40,16 @@ module.exports = function(app) {
 	})
 
 	app.get('/api/v1/sleep', async function sleep(req, res) {
-            await app.reviewsService.sleep(req.db)
+		try {
+			if (!await app.reviewsService.sleep.fire(req.db)) {
+				throw { "Error": "Query Timeout" }
+			}
 			let now = new Date();
 			return res.type("text/plain").send(`Sleep time is over: ${now.toLocaleTimeString()}`)
+		} catch (error) {
+			req.db.abort();
+			req.logMessage('error', error)
+			return res.status(HTTP_INTERNAL_SERVER_ERROR).send(error);
+		}
 	})
 };

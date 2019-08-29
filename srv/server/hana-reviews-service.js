@@ -1,6 +1,13 @@
 'use strict'
 function hanaReviewsService() {
     const dbClass = require("../utils/dbPromises");
+    const circuitBreaker = require('opossum');
+    const breakerOptions = {
+        timeout: 3000, // If our function takes longer than 3 seconds, trigger a failure
+        errorThresholdPercentage: 50, // When 50% of requests fail, trip the circuit
+        resetTimeout: 10000 // After 10 seconds, try again.
+    };
+
     this.getAll = async function (req) {
         let db = new dbClass(req.db);
         try {
@@ -35,7 +42,11 @@ function hanaReviewsService() {
         const results = await db.callProcedurePromisified(sp, []);
         return results;
     }
-    this.sleep = sleep;
+    const breaker = new circuitBreaker(sleep, breakerOptions);
+    breaker.fallback(() => {
+        return false;
+    });
+    this.sleep = breaker;
 
 
     this.create = async function (review, req) {
