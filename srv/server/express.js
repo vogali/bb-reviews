@@ -7,6 +7,7 @@ module.exports = function (app) {
 	const hanaReviewsService = require('./hana-reviews-service')
 	app.reviewsService = new hanaReviewsService()
 	app.logger = require('cf-nodejs-logging-support')
+	app.logger.setLoggingLevel("error");
 
 	const xsenv = require("@sap/xsenv")
 	xsenv.loadEnv()

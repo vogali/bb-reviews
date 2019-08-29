@@ -32,7 +32,7 @@
             }
         },
         {
-            "source": "/odata/v4/(.*)",
+            "source": "/catalog/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
             "authenticationType": "xsuaa",
@@ -53,9 +53,8 @@
                 "default": "$XSAPPNAME.Display"
             }
         },
-        ,
         {
-            "source": "/odata/v2/(.*)",
+            "source": "/v2/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
             "authenticationType": "xsuaa",
