@@ -1,6 +1,6 @@
 {
-    "name": "bb-reviews-starter",
-    "description": "Bulletin Board Reviews Starter Project",
+    "name": "bb-reviews",
+    "description": "Bulletin Board Reviews Sample Implementation",
     "repository": {
         "type": "git",
         "url": "https://github.com/jungsap/bb-reviews-starter"
