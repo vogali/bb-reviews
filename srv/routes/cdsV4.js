@@ -15,7 +15,7 @@ module.exports = function (app) {
         })
         .to("fiori")
         .at(odataURL)
-        //	.with(require("./cat-service"))
+        .with(require("../lib/handlers/my-service"))
         .in(app)
         .catch((err) => {
             app.logger.logMessage('error', err);
@@ -28,8 +28,8 @@ module.exports = function (app) {
             crashOnError: false
         })
         .to("fiori")
-        //	.with(require("./cat-service"))
         .in(app)
+        .with(require("../lib/handlers/my-service"))        
         .catch((err) => {
             app.logger.logMessage('error', err);
             process.exit(1);

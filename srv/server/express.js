@@ -23,9 +23,10 @@ module.exports = function (app) {
 
 	require('./healthCheck')(app, { hdbext: HDBConn, hanaOptions: hanaOptions })
 	require('./overloadProtection')(app)
-
-	require('./expressSecurity')(app)
 	app.use(require('express-status-monitor')())
+	
+	require('./expressSecurity')(app)
+
 
 	app.use(express.static('../app/webapp'))
 	app.use(app.logger.logNetwork)

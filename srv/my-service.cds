@@ -8,4 +8,6 @@ service CatalogService {
 			DeleteRestrictions: {Deletable: true}
 		}
 	) as projection on ReviewsTbl;
+
+	function sleep() returns Boolean;
  }

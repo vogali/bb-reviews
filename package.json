@@ -37,8 +37,8 @@
                 ]
             },
             "uaa": {
-				"kind": "xsuaa"
-			}
+                "kind": "xsuaa"
+            }
         }
     }
 }
