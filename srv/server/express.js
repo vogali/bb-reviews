@@ -4,12 +4,17 @@ const bodyParser = require('body-parser')
 const express = require('express')
 
 module.exports = function (app) {
-	const hanaReviewsService = require('./hana-reviews-service')
-	app.reviewsService = new hanaReviewsService()
+
 
 	let logging = require('@sap/logging');
 	let appContext = logging.createAppContext({})
 	app.logger = appContext.createLogContext().getLogger('/Application')
+
+	const hanaReviewsService = require('./hana-reviews-service')
+	app.reviewsService = new hanaReviewsService()
+
+	const featureFlags = require('./featureFlags')
+	app.featureFlags = new featureFlags(app.logger)
 
 	const xsenv = require("@sap/xsenv")
 	xsenv.loadEnv()
