@@ -20,7 +20,7 @@
         "hdb": "0.17.0",
         "express": "^4.17.1",
         "@cloudnative/health-connect": "^2.0.0",
-        "cf-nodejs-logging-support": "^5.2.4",
+        "@sap/logging": "^5.0.2",
         "express-status-monitor": "^1.2.6",
         "memory-cache": "^0.2.0",
         "opossum": "^4.0.0",

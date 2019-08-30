@@ -8,7 +8,9 @@ module.exports = (app) => {
         maxHeapUsedBytes: 0, // maximum heap used threshold (0 to disable) [default 0]
         maxRssBytes: 0, // maximum rss size threshold (0 to disable) [default 0]
         errorPropagationMode: false, // dictate behavior: take over the response 
-        logging: (message)=>{app.logger.logMessage('error', message)}
+        logging: (message)=>{
+            app.logger.error(message)
+        }
         // or propagate an error to the framework [default false]
     }
     const protect = require('overload-protection')('express', protectCfg)

@@ -18,7 +18,7 @@ module.exports = function (app) {
         .with(require("../lib/handlers/my-service"))
         .in(app)
         .catch((err) => {
-            app.logger.logMessage('error', err);
+            app.logger.error(err);
             process.exit(1);
         });
 
@@ -31,7 +31,7 @@ module.exports = function (app) {
         .in(app)
         .with(require("../lib/handlers/my-service"))        
         .catch((err) => {
-            app.logger.logMessage('error', err);
+            app.logger.error(err);
             process.exit(1);
         });
     const odatav2proxy = require("@sap/cds-odata-v2-adapter-proxy");

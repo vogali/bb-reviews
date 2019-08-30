@@ -6,8 +6,10 @@ const express = require('express')
 module.exports = function (app) {
 	const hanaReviewsService = require('./hana-reviews-service')
 	app.reviewsService = new hanaReviewsService()
-	app.logger = require('cf-nodejs-logging-support')
-	app.logger.setLoggingLevel("error");
+
+	let logging = require('@sap/logging');
+	let appContext = logging.createAppContext({})
+	app.logger = appContext.createLogContext().getLogger('/Application')
 
 	const xsenv = require("@sap/xsenv")
 	xsenv.loadEnv()
@@ -29,7 +31,7 @@ module.exports = function (app) {
 
 
 	app.use(express.static('../app/webapp'))
-	app.use(app.logger.logNetwork)
+	app.use(logging.middleware({ appContext: appContext, logNetwork: true }));
 
 	app.use(
 		HDBConn.middleware(hanaOptions.hana)
