@@ -20,25 +20,8 @@ module.exports = function (app) {
 	hanaOptions.hana.pooling = true;
 	app.use(bodyParser.json())
 
-	//Health Check - Can we at least connect to underlying persistence?
-	const health = require('@cloudnative/health-connect');
-	let healthcheck = new health.HealthChecker();
-	const hanaHealth = () => new Promise(function (resolve, _reject) {
-		HDBConn.createConnection(hanaOptions.hana, function (error) {
-			if (error) {
-				_reject(error);
-			}
-			resolve()
-		});
-	});
-	let startCheck = new health.StartupCheck("startCheck", hanaHealth);
-	healthcheck.registerStartupCheck(startCheck);
-	let liveCheck = new health.LivenessCheck("liveCheck", hanaHealth);
-	healthcheck.registerLivenessCheck(liveCheck);
-
-	app.use('/live', health.LivenessEndpoint(healthcheck))
-	app.use('/ready', health.ReadinessEndpoint(healthcheck))
-	app.use('/health', health.HealthEndpoint(healthcheck))
+	require('./healthCheck')(app, {hdbext: HDBConn, hanaOptions: hanaOptions})
+	require('./overloadProtection')(app)
 	app.use(require('express-status-monitor')())
 	
 	app.use(express.static('../app/webapp'))
