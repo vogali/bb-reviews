@@ -13,67 +13,25 @@
             "source": "/api/v1/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "POST": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "PUT": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "DELETE": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Delete"
-                ],
-                "default": "$XSAPPNAME.Display"
-            }
+            "authenticationType": "xsuaa"
         },
         {
             "source": "/catalog/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "POST": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "PUT": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "DELETE": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Delete"
-                ],
-                "default": "$XSAPPNAME.Display"
-            }
+            "authenticationType": "xsuaa"
         },
         {
-            "source": "/v2/(.*)",
+            "source": "/odata/v4/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "POST": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "PUT": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Create"
-                ],
-                "DELETE": [
-                    "$XSAPPNAME.Display",
-                    "$XSAPPNAME.Delete"
-                ],
-                "default": "$XSAPPNAME.Display"
-            }
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "odata/v2/(.*)",
+            "destination": "srv_api",
+            "csrfProtection": true,
+            "authenticationType": "xsuaa"
         },
         {
             "source": "^/logout.html$",
@@ -83,16 +41,7 @@
         {
             "source": "/(.*)",
             "localDir": "webapp",
-            "authenticationType": "xsuaa",
-            "scope": {
-                "GET": "$XSAPPNAME.Display",
-                "default": "$XSAPPNAME.Display"
-            },
-            "replace": {
-                "pathSuffixes": [
-                    "index.html"
-                ]
-            }
+            "authenticationType": "xsuaa"
         }
     ]
 }

@@ -28,7 +28,11 @@
         "pg": "^7.4.3",
         "then-request": "^6.0.2",
         "overload-protection": "^1.1.0",
-        "event-loop-lag": "1.4.0"
+        "event-loop-lag": "1.4.0",
+        "passport": "~0.4.0",
+        "accept-language-parser": "latest",
+        "body-parser": "~1.19",
+        "helmet": "~3.20"
     },
     "devDependencies": {
         "eslint": "^6.2.2",
@@ -39,5 +43,22 @@
     "scripts": {
         "start": "node index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "cds": {
+        "odata": {
+            "version": "v4"
+        },
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "model": [
+                    "srv",
+                    "db"
+                ]
+            },
+            "uaa": {
+                "kind": "xsuaa"
+            }
+        }
     }
 }

@@ -18,12 +18,15 @@ module.exports = function (app) {
 		}
 	});
 	hanaOptions.hana.pooling = true;
+
 	app.use(bodyParser.json())
 
-	require('./healthCheck')(app, {hdbext: HDBConn, hanaOptions: hanaOptions})
+	require('./healthCheck')(app, { hdbext: HDBConn, hanaOptions: hanaOptions })
 	require('./overloadProtection')(app)
+
+	require('./expressSecurity')(app)
 	app.use(require('express-status-monitor')())
-	
+
 	app.use(express.static('../app/webapp'))
 	app.use(app.logger.logNetwork)
 

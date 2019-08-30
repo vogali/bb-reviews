@@ -9,7 +9,6 @@ module.exports = function (app) {
         logLevel: "error"
     };
     cds.connect(cdsOptions);
-
     cds.serve(
         "../srv/gen/csn.json", {
             crashOnError: false
