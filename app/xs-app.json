@@ -10,7 +10,7 @@
     },
     "routes": [
         {
-            "source": "/api/v1/(.*)",
+            "source": "/api/(.*)",
             "destination": "srv_api",
             "csrfProtection": true,
             "authenticationType": "xsuaa"

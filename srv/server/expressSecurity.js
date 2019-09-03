@@ -7,8 +7,9 @@ module.exports = (app) => {
     app.use(helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "sapui5.hana.ondemand.com"],
-            scriptSrc: ["'self'", "sapui5.hana.ondemand.com"]
+            styleSrc: ["'self'", "sapui5.hana.ondemand.com", "'unsafe-inline'"],
+            scriptSrc: ["'self'", "sapui5.hana.ondemand.com", "'unsafe-inline'"],
+            imgSrc: ["'self'", "sapui5.hana.ondemand.com", "data:"]
         }
     }))
 
