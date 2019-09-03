@@ -26,7 +26,6 @@ module.exports = async (app) => {
 	try {
 		let service = await parse(metadata)
 		let swagger = await convert(service.entitySets, odataOptions, service.version)
-		console.log(JSON.stringify(swagger, null, 2))
 		Object.keys(swagger.paths).forEach(function(key) {
 			let val = swagger.paths[key]
 			swaggerSpec.paths[`/odata/v4/catalog${key}`] = val
