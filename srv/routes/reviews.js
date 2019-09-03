@@ -30,6 +30,8 @@ module.exports = function (app) {
 	 * /api/v1/reviews:
 	 *   get:
 	 *     summary: Get a list of Reviews
+	 *     tags:
+	 *       - Reviews
 	 *     responses:
 	 *       '200':
 	 *         description: A List of reviews
@@ -52,6 +54,8 @@ module.exports = function (app) {
 	 * /api/v1/reviews/{revieweeEmail}:
 	 *   get:
 	 *     summary: Get a list of Reviews
+	 *     tags:
+	 *       - Reviews 
 	 *     parameters:
 	 *       - name: revieweeEmail
 	 *         in: path
@@ -82,6 +86,8 @@ module.exports = function (app) {
 	 * /api/v1/averageRatings/{email}:
 	 *   get:
 	 *     summary: Get Average Rating
+	 *     tags:
+	 *       - Reviews  
 	 *     parameters:
 	 *       - name: email
 	 *         in: path
@@ -113,6 +119,8 @@ module.exports = function (app) {
 	 * /api/v1/reviews:
 	 *   post:
 	 *     summary: Create a new Reviews
+	 *     tags:
+	 *       - Reviews 
 	 *     requestBody:
 	 *       description: New Review Details
 	 *       required: true
@@ -144,6 +152,8 @@ module.exports = function (app) {
 	 * /api/v1/reviews:
 	 *   delete:
 	 *     summary: Delete All Reviews
+	 *     tags:
+	 *       - Reviews
 	 *     responses:
 	 *       '204':
 	 *         description: Sucessful Deletion
@@ -160,6 +170,8 @@ module.exports = function (app) {
 	 * /api/v1/sleep:
 	 *   get:
 	 *     summary: Call the Sleep Stored Procedure to simulate a long running DB query
+	 *     tags:
+	 *       - Sleep  
 	 *     responses:
 	 *       '200':
 	 *         description: Sleep Timer is Over

@@ -9,6 +9,9 @@ module.exports = async (app) => {
 		res.setHeader('Content-Type', 'application/json')
 		res.send(swaggerSpec)
 	});
-	app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+	let options = {
+		explorer: true
+	}
+	app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, options))
 
 };

@@ -10,6 +10,8 @@ module.exports = function(app) {
 	 * /api/v1/newFeature:
 	 *   get:
 	 *     summary: Call the remote feature flags service to see if flag-name-1 is activated
+	 *     tags:
+	 *       - FeatureFlags
 	 *     responses:
 	 *       '200':
 	 *         description: New Feature of this Service
@@ -41,6 +43,8 @@ module.exports = function(app) {
 	 * /api/v1/exportFeatureFlags:
 	 *   get:
 	 *     summary: Export all feature flag details for this service
+	 *     tags:
+	 *       - FeatureFlags 
 	 *     responses:
 	 *       '200':
 	 *         description: Feature Flags Details
@@ -70,6 +74,8 @@ module.exports = function(app) {
 	 * /api/v1/monitor:
 	 *   get:
 	 *     summary: Prometheus monitoring data including circuit breaker details
+	 *     tags:
+	 *       - Monitoring 
 	 *     responses:
 	 *       '200':
 	 *         description: Prometheus monitoring data

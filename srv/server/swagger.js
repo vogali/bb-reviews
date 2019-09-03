@@ -10,7 +10,20 @@ function swagger() {
                     title: 'Bulletin Board Reviews',
                     version: '1.0.0',
                     "x-odata-version": '4.0'
-                }
+                },
+                tags: [
+                    {
+                        name: "Reviews"
+                    },
+                    {
+                        name: "FeatureFlags"
+                    },
+                    {
+                        name: "Sleep"
+                    },
+                    {
+                        name: "Monitoring"
+                    }                ],
             },
             apis: ['./routes/*']
         }
