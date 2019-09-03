@@ -16,6 +16,9 @@ module.exports = function (app) {
 	const featureFlags = require('./featureFlags')
 	app.featureFlags = new featureFlags(app.logger)
 
+	const swagger = require('./swagger')
+	app.swagger = new swagger()
+
 	const xsenv = require("@sap/xsenv")
 	xsenv.loadEnv()
 	const HDBConn = require("@sap/hdbext")
